@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-    name: web-app
+    name: web_app
 spec:
     selector:
       matchLabels:
@@ -12,7 +12,7 @@ spec:
           app: web
       spec:
         containers:
-        - name: kube-app
+        - name: kube
           image: docker.io/shreyas1717/kube:
           ports:
           - containerPort: 80
