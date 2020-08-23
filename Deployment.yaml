@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: web-app
+spec:
+    selector:
+      matchLabels:
+        app: web
+    template:
+      metadata:
+        labels:
+          app: web
+      spec:
+        containers:
+        - name: kube-app
+          image: docker.io/vishnusk/kube-demo:
+          ports:
+          - containerPort: 80
+            hostPort: 8081
