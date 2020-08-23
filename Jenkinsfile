@@ -9,7 +9,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("shreyas1717/kube:${env.BUILD_ID}")
+                    myapp = docker.build("shreyas1717/web_app:${env.BUILD_ID}")
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         }        
         stage('Deploy to GKE') {
             steps{
-                sh "sed -i 's/Kube:*/Kube:${env.BUILD_ID}/g' Deployment.yaml"
+                sh "sed -i 's/web_app:*/web_app:${env.BUILD_ID}/g' Deployment.yaml"
                 sh 'kubectl apply -f Deployment.yaml'
                 sh 'kubectl apply -f Service.yaml'
             }
