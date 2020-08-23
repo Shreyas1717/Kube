@@ -1,15 +1,15 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = 'summer-sun-286703'
-        CLUSTER_NAME = 'kube-demo'
-        LOCATION = 'asia-southeast1-a'
+        PROJECT_ID = 'extreme-minutia-284006'
+        CLUSTER_NAME = 'demo'
+        LOCATION = 'us-central1-a	'
     }
     stages {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("vishnusk/kube-demo:${env.BUILD_ID}")
+                    myapp = docker.build("Shreyas1717/Kube:${env.BUILD_ID}")
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         }        
         stage('Deploy to GKE') {
             steps{
-                sh "sed -i 's/kube-demo:*/kube-demo:${env.BUILD_ID}/g' Deployment.yaml"
+                sh "sed -i 's/Kube:*/Kube:${env.BUILD_ID}/g' Deployment.yaml"
                 sh 'kubectl apply -f Deployment.yaml'
                 sh 'kubectl apply -f Service.yaml'
             }
