@@ -13,7 +13,7 @@ spec:
       spec:
         containers:
         - name: kube-app
-          image: docker.io/shreyas1717/Kube:
+          image: docker.io/shreyas1717/web_app:
           ports:
           - containerPort: 80
             hostPort: 8081
